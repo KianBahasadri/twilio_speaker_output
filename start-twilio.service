@@ -1,0 +1,10 @@
+[Unit]
+Description=Start Twilio Fastapi Server
+
+[Service]
+ExecStart=/etc/twilio_speaker_output/start_server.sh
+Restart=Always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
