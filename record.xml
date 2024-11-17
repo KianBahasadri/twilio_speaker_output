@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
+	<Say> Please start your recording after the beep</Say>
 	<Record action="https://stream.ankledane.com/call/recording" maxLength="10" method="GET"/>
 </Response>

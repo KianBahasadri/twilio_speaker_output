@@ -15,7 +15,7 @@ def record_xml():
 def download_recording(RecordingUrl):
     print(f"RecordingUrl:\n{RecordingUrl}")
     time.sleep(2)
-    subprocess.run(['ffmpeg', '-i', RecordingUrl, '-f', 'alsa', 'default'])
+    subprocess.Popen(['ffmpeg', '-i', RecordingUrl, '-f', 'alsa', 'default'])
     
 @app.get('/sms')
 def sms_reply(Body):
@@ -36,7 +36,8 @@ def sms_reply(Body):
         return Response(str(resp), media_type="text/xml")
     
     try:
-        subprocess.run(['ffmpeg', '-i', url, '-f', 'alsa', 'default'])
+        subprocess.run(['pkill', 'ffmpeg'])
+        subprocess.Popen(['ffmpeg', '-i', url, '-f', 'alsa', 'default'])
     except:
         resp.message("there was an error during audio playback of the file")
         return Response(str(resp), media_type="text/xml")
